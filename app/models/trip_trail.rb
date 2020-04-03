@@ -1,0 +1,3 @@
+class TripTrail < ApplicationRecord
+  
+end
