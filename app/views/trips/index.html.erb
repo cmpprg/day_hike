@@ -1,5 +1,5 @@
 <section class="list">
   <% @trips.each do |trip| %>
-    <p><%= trip.name %></p>
+    <p><%= link_to trip.name, "/trips/#{trip.id}" %></p>
   <% end %>
 </section>
