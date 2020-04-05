@@ -13,6 +13,5 @@ describe Trail, type: :model do
   describe "relationships" do
     it {should have_many :trip_trails}
     it {should have_many(:trips).through(:trip_trails)}
-
   end
 end

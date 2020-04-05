@@ -1,13 +1,27 @@
 <h1><%= @trip.name %></h1>
 
-<% @trip.trails.each do |trail| %>
-  <section id="trail-<%= trail.id %>">
-    <p>Name: <%= trail.name %></p>
-    <p>Address: <%= trail.address %></p>
-    <p>Length: <%= trail.length %></p>
+<% if @trip.trails.empty? %>
+  <h2>There are no trails at this time.</h2>
+<% else %>
+  <% @trip.trails.each do |trail| %>
+    <section id="trail-<%= trail.id %>">
+      <p>Name: <%= trail.name %></p>
+      <p>Address: <%= trail.address %></p>
+      <p>Length: <%= trail.length %></p>
+    </section>
+  <% end %>
+
+  <section class="stats">
+    <p>Total Distance of All Trails: <%= @trip.total_trail_distance %></p>
+    <p>Average Distance of all trails: <%= @trip.average_trail_distance.round(1) %></p>
+  </section>
+
+  <section class="longest-trail">
+    <h2>Longest Trail on Trip:</h2>
+    <p><%= @trip.longest_trail.name %> - <%= @trip.longest_trail.length %> miles</p>
+  </section>
+  <section class="shortest-trail">
+    <h2>Shortest Trail on Trip:</h2>
+    <p><%= @trip.shortest_trail.name %> - <%= @trip.shortest_trail.length %> miles</p>
   </section>
 <% end %>
-
-<section class="stats">
-  <p>Total Distance of All Trails: <%= @trip.total_trail_distance %></p>
-</section>
