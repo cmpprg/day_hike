@@ -44,4 +44,10 @@ RSpec.describe "When I visit a trail's show page", type: :feature do
       end
     end
   end
+
+  it "I see the total number of hiking trips where this trail is included." do
+    within(".trail-info") do
+      expect(page).to have_content("#{@trail3.trip_count} trips include this trail.")
+    end
+  end
 end
