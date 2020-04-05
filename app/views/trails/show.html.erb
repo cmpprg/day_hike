@@ -1,0 +1,12 @@
+<section class="trail-info">
+  <h1><%= @trail.name %></h1>
+  <h2>Address: <%= @trail.address %></h2>
+</section>
+
+<section class="associated-trips">
+  <% @trail.trips.each_with_index do |trip, index| %>
+    <section id="trip-<%= trip.id %>">
+      <p><%= index + 1 %>. <%= trip.name %> - Total Length: <%= trip.total_trail_distance %></p>
+    </section>
+  <% end %>
+</section>
