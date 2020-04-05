@@ -22,7 +22,6 @@ group :development, :test do
   gem 'pry'
   gem 'launchy'
   gem 'simplecov', require: false, group: :test
-  gem 'therubyracer'
 end
 
 group :development do

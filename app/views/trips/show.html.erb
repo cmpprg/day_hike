@@ -1,0 +1,9 @@
+<h1><%= @trip.name %></h1>
+
+<% @trip.trails.each do |trail| %>
+  <section id="trail-<%= trail.id %>">
+    <p>Name: <%= trail.name %></p>
+    <p>Address: <%= trail.address %></p>
+    <p>Length: <%= trail.length %></p>
+  </section>
+<% end %>
