@@ -14,6 +14,7 @@ RSpec.describe "When I visit a trips show page.", type: :feature do
 
     visit "/trips/#{@trip1.id}"
   end
+
   it "I can see name, address, and length for each trail." do
     within("#trail-#{@trail1.id}") do
       expect(page).to have_content("Name: #{@trail1.name}")
@@ -29,6 +30,12 @@ RSpec.describe "When I visit a trips show page.", type: :feature do
       expect(page).to have_content("Name: #{@trail3.name}")
       expect(page).to have_content("Address: #{@trail3.address}")
       expect(page).to have_content("Length: #{@trail3.length}")
+    end
+  end
+
+  it "I see the total hiking distance of all trails on trip" do
+    within(".stats") do
+      expect(page).to have_content("Total Distance of All Trails: #{@trail1.length + @trail2.length + @trail3.length}")
     end
   end
 end
