@@ -51,10 +51,35 @@ RSpec.describe "When I visit a trips show page.", type: :feature do
       expect(page).to have_content("#{@trail3.name} - #{@trail3.length} miles")
     end
   end
+
   it "I see a heading that says 'Shortest Trail on Trip' and the name and length of longest trails" do
     within(".shortest-trail") do
       expect(page).to have_content("Shortest Trail on Trip:")
       expect(page).to have_content("#{@trail2.name} - #{@trail2.length} miles")
     end
+  end
+
+  it "I can click on the name of a trail and be taken to that trails show page." do
+    within("#trail-#{@trail2.id}") do
+      click_link(@trail2.name)
+    end
+
+    expect(current_path).to eql("/trails/#{@trail2.id}")
+
+    visit "/trips/#{@trip1.id}"
+    
+    within(".longest-trail") do
+      click_link(@trail3.name)
+    end
+
+    expect(current_path).to eql("/trails/#{@trail3.id}")
+
+    visit "/trips/#{@trip1.id}"
+
+    within(".shortest-trail") do
+      click_link(@trail2.name)
+    end
+
+    expect(current_path).to eql("/trails/#{@trail2.id}")
   end
 end

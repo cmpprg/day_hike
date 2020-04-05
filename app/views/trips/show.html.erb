@@ -5,7 +5,7 @@
 <% else %>
   <% @trip.trails.each do |trail| %>
     <section id="trail-<%= trail.id %>">
-      <p>Name: <%= trail.name %></p>
+      <p>Name: <%= link_to trail.name, "/trails/#{trail.id}" %></p>
       <p>Address: <%= trail.address %></p>
       <p>Length: <%= trail.length %></p>
     </section>
@@ -18,10 +18,10 @@
 
   <section class="longest-trail">
     <h2>Longest Trail on Trip:</h2>
-    <p><%= @trip.longest_trail.name %> - <%= @trip.longest_trail.length %> miles</p>
+    <p><%= link_to @trip.longest_trail.name, "/trails/#{@trip.longest_trail.id}" %> - <%= @trip.longest_trail.length %> miles</p>
   </section>
   <section class="shortest-trail">
     <h2>Shortest Trail on Trip:</h2>
-    <p><%= @trip.shortest_trail.name %> - <%= @trip.shortest_trail.length %> miles</p>
+    <p><%= link_to @trip.shortest_trail.name, "/trails/#{@trip.shortest_trail.id}" %> - <%= @trip.shortest_trail.length %> miles</p>
   </section>
 <% end %>
